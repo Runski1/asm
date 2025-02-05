@@ -12,4 +12,4 @@ fi
 # Run cmake, make, and then flash using the project name
 cmake -DCMAKE_BUILD_TYPE=Release .. &&
 make -j4 &&
-sudo openocd -f ../pico-debug.cfg -c "program ${PROJECT_NAME}.elf verify reset exit"
+sudo openocd -f /usr/share/openocd/scripts/interface/cmsis-dap.cfg -f /usr/share/openocd/scripts/board/pico-debug.cfg -c "program ${PROJECT_NAME}.elf verify reset exit"

@@ -3,6 +3,7 @@ cmake_minimum_required(VERSION 3.12)
 
 # Set board type because we are building for PicoW
 set(PICO_BOARD pico_w)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # Include build functions from Pico SDK
 include($ENV{PICO_SDK_PATH}/external/pico_sdk_import.cmake)
@@ -32,7 +33,6 @@ include_directories(${CMAKE_CURRENT_LIST_DIR}/lib)
 add_executable(${PROJECT_NAME} 
         # All C-files here (relative to this file)
         source/exercise5.c
-        # ../lib/button.c
 )
 
 # Create map/bin/hex/uf2 files
@@ -41,9 +41,6 @@ pico_add_extra_outputs(${PROJECT_NAME})
 # Link to pico_stdlib (gpio, time, etc. functions)
 target_link_libraries(${PROJECT_NAME} 
         pico_stdlib
-        hardware_pwm
-        hardware_gpio
-        hardware_uart
 )
 
 # Disable usb output, enable uart output
