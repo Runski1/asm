@@ -15,7 +15,7 @@ __attribute__((naked)) int prt(const char *a) {
                              // another subroutine
         "mov r4, r0 \n" // Copy the ch pointer to r4
         "loop: \n"
-        "ldr r0, [r4] \n" // load character to r0
+        "ldrb r0, [r4] \n" // load character to r0
         "cmp r0, #0\n" 
         "beq end \n" // if ch == 0 goto end
         "bl putchar \n" // else putchar
